@@ -6,6 +6,7 @@ import {
   Image,
   Text,
   TouchableOpacity,
+  Alert,
 } from 'react-native';
 const logo = require('../assets/chatify_white.png');
 
@@ -18,12 +19,18 @@ const LoginScreen = ({navigation}) => {
   const [password, setPassword] = useState('');
 
   const onLogin = () => {
-    navigation.navigate('Home', {
-      data: {
-        email: email,
-        name: 'Okky Alwan Baidhoo',
-      },
-    });
+    if (email.length < 7) {
+      Alert.alert('Warning!', 'Username/email harus lebih dari 7 karakter');
+    } else if (password.length < 5) {
+      Alert.alert('Warning!', 'Password harus lebih dari 5 karakter');
+    } else {
+      navigation.navigate('Home', {
+        data: {
+          email: email,
+          name: 'Okky Alwan Baidhoo',
+        },
+      });
+    }
   };
 
   const onRegister = () => {
@@ -48,6 +55,7 @@ const LoginScreen = ({navigation}) => {
           value={password}
           onChangeText={(value) => setPassword(value)}
           placeholderTextColor="gray"
+          secureTextEntrys
         />
         <Gap height={20} />
         <TouchableOpacity style={{alignSelf: 'flex-end'}}>
@@ -55,7 +63,7 @@ const LoginScreen = ({navigation}) => {
         </TouchableOpacity>
         <Gap height={20} />
 
-        <TouchableOpacity onPress={() => onLogin()} style={styles.btnSignup}>
+        <TouchableOpacity onPress={() => onLogin()} style={styles.btnLogin}>
           <Text style={styles.textButton}>LOGIN</Text>
         </TouchableOpacity>
         <Gap height={20} />
@@ -101,7 +109,14 @@ const styles = StyleSheet.create({
     color: '#ccc',
   },
   btnSignup: {
-    backgroundColor: '#0BCAD4',
+    backgroundColor: '#EB9605',
+    paddingVertical: 15,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 50,
+  },
+  btnLogin: {
+    backgroundColor: '#1167b1',
     paddingVertical: 15,
     alignItems: 'center',
     justifyContent: 'center',
@@ -109,11 +124,11 @@ const styles = StyleSheet.create({
   },
   textButton: {
     fontSize: 16,
-    color: '#112340',
+    color: '#fff',
     fontWeight: 'bold',
   },
   textLink: {
-    color: '#0BCAD4',
+    color: '#CCC',
     fontWeight: 'bold',
   },
 });

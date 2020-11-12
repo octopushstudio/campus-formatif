@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, View, Image} from 'react-native';
-const avatar = require('../assets/avatar.png');
+const avatar = require('../assets/binainsani.jpg');
 
 const Gap = ({width, height}) => (
   <View style={{height: height ? height : 0, width: width ? width : 0}} />
@@ -13,9 +13,10 @@ const HomeScreen = () => {
       <Gap height={20} />
 
       <View style={{alignItems: 'center', justifyContent: 'center'}}>
-        <Text style={styles.textBold}>Okky Alwan [Okky]</Text>
-        <Text style={styles.text}>13th Oct 2000 - 20 years old</Text>
-        <Text style={styles.text}>okkyalwan7@gmail.com</Text>
+        <Text style={styles.textBold}>Universitas Bina Insani</Text>
+        <Text style={styles.text}>
+          Good job, your complete {'\n'}all task this month
+        </Text>
       </View>
     </View>
   );
@@ -30,16 +31,18 @@ const styles = StyleSheet.create({
   },
   avatar: {
     width: 150,
-    height: 150,
+    height: 165,
     justifyContent: 'center',
     alignSelf: 'center',
     marginTop: 30,
   },
   textBold: {
+    fontSize: 20,
     color: '#112340',
     fontWeight: 'bold',
   },
   text: {
     color: '#112340',
+    textAlign: 'center'
   },
 });
